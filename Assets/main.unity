@@ -176,7 +176,9 @@ PrefabInstance:
       value: hammer
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 65702495048144492, guid: c6378befefe56b64ea5365bf015dd34b, type: 3}
+    - {fileID: -8700617353114198275, guid: c6378befefe56b64ea5365bf015dd34b, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6378befefe56b64ea5365bf015dd34b, type: 3}
@@ -238,7 +240,9 @@ PrefabInstance:
       value: smallchisel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 65702495048144492, guid: e261d6de796560e4ba2d2bd34b805f68, type: 3}
+    - {fileID: -8700617353114198275, guid: e261d6de796560e4ba2d2bd34b805f68, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e261d6de796560e4ba2d2bd34b805f68, type: 3}
@@ -2109,7 +2113,9 @@ PrefabInstance:
       value: largechisel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 65702495048144492, guid: 237fde88cbb3d564095069daed9eb3f9, type: 3}
+    - {fileID: -8700617353114198275, guid: 237fde88cbb3d564095069daed9eb3f9, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 237fde88cbb3d564095069daed9eb3f9, type: 3}
@@ -2671,7 +2677,9 @@ PrefabInstance:
       value: mediumchisel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 65702495048144492, guid: 3ea32dad977f6bf48b0df6a8c1754931, type: 3}
+    - {fileID: -8700617353114198275, guid: 3ea32dad977f6bf48b0df6a8c1754931, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ea32dad977f6bf48b0df6a8c1754931, type: 3}
