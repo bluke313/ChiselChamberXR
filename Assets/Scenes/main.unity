@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.26609626, g: 0.23151985, b: 0.2494643, a: 1}
+  m_IndirectSpecularColor: {r: 0.25330132, g: 0.21698837, b: 0.23319197, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -979,7 +979,16 @@ MonoBehaviour:
   damageFalloff: 1
   damageMultiplier: 1
   minDamage: 1
-  collisionSounds: []
+  collisionSounds:
+  - {fileID: 8300000, guid: 5dbe2041003bfaf4b91d03bd54cb3ad8, type: 3}
+  - {fileID: 8300000, guid: 45d4790ce8b01af4fa2645176a184bf9, type: 3}
+  - {fileID: 8300000, guid: 7e6bb2987ce707c4dab18534b5a7b2c1, type: 3}
+  - {fileID: 8300000, guid: 5b6432d0f1743574fa3e65bf11ca8f4d, type: 3}
+  - {fileID: 8300000, guid: 14bf6577e60c57745aa23b8da3b66755, type: 3}
+  - {fileID: 8300000, guid: 87f90d5e0032a7842b655bfe77d10c64, type: 3}
+  - {fileID: 8300000, guid: 47e39257b75604944b2b54c8ede02f51, type: 3}
+  - {fileID: 8300000, guid: 4c4ffbbec0667e947ba06f4d835628f1, type: 3}
+  - {fileID: 8300000, guid: 8b8ac0ad10976cf488deaa03103f3a6f, type: 3}
 --- !u!64 &559512025
 MeshCollider:
   m_ObjectHideFlags: 0
