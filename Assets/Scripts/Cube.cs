@@ -8,7 +8,9 @@ public class Cube : MonoBehaviour {
     private int ySize = 10;
     private int zSize = 10;
     private Vector3[] vertices;
+	private Vector2[] uvs;
     private Mesh mesh;
+	public Material materialWithTexture;
 
     private void Awake () {
 		Generate();
@@ -16,10 +18,26 @@ public class Cube : MonoBehaviour {
 
 	private void Generate () {
         GetComponent<MeshFilter>().mesh = mesh = new Mesh();
+		
+		// Texture2D myTexture = Resources.Load<Texture2D>("Stone_diff"); // No file extension
+        // if (myTexture != null)
+        // {
+        //     Material material = new Material(Shader.Find("Standard"));
+        //     material.mainTexture = myTexture;
+        //     GetComponent<MeshRenderer>().material = material;
+        // }
 		mesh.name = "Procedural Cube";
 		createVertices();
         createTriangles();
         GetComponent<MeshCollider>().sharedMesh = mesh;
+
+		uvs = new Vector2[vertices.Length];
+
+        for (int i = 0; i < uvs.Length; i++)
+        {
+            uvs[i] = new Vector2(vertices[i].x, vertices[i].z);
+        }
+        mesh.uv = uvs;
         // int[] triangles = new int[xSize * ySize * 6];
         // for (int ti = 0, vi = 0, y = 0; y < ySize; y++, vi++) {
 		// 	for (int x = 0; x < xSize; x++, ti += 6, vi++) {
