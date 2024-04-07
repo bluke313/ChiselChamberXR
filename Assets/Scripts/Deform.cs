@@ -20,8 +20,9 @@ public class Deform : MonoBehaviour
     private MeshFilter filter;
     private Rigidbody physics;
     private MeshCollider coll;
-    private Vector3[] startingVerticies;
-    private Vector3[] meshVerticies;
+    private Vector3[] startingVertices;
+    private Vector3[] meshVertices;
+    private Vector2[] uvs;
  
     void Start()
     {
@@ -31,8 +32,8 @@ public class Deform : MonoBehaviour
         if (GetComponent<MeshCollider>())
             coll = GetComponent<MeshCollider>();
  
-        startingVerticies = filter.mesh.vertices;
-        meshVerticies = filter.mesh.vertices;
+        startingVertices = filter.mesh.vertices;
+        meshVertices = filter.mesh.vertices;
     }
     
     void OnCollisionEnter(Collision collision)
@@ -46,12 +47,12 @@ public class Deform : MonoBehaviour
  
             foreach (ContactPoint point in collision.contacts)
             {
-                for (int i = 0; i < meshVerticies.Length; i++)
+                for (int i = 0; i < meshVertices.Length; i++)
                 {
-                    Vector3 vertexPosition = meshVerticies[i];
+                    Vector3 vertexPosition = meshVertices[i];
                     Vector3 pointPosition = transform.InverseTransformPoint(point.point);
                     float distanceFromCollision = Vector3.Distance(vertexPosition, pointPosition);
-                    float distanceFromOriginal = Vector3.Distance(startingVerticies[i], vertexPosition);
+                    float distanceFromOriginal = Vector3.Distance(startingVertices[i], vertexPosition);
  
                     if (distanceFromCollision < deformRadius && distanceFromOriginal < maxDeform) // If within collision radius and within max deform
                     {
@@ -66,18 +67,26 @@ public class Deform : MonoBehaviour
                         zDeform = Mathf.Clamp(zDeform, 0, maxDeform);
  
                         Vector3 deform = new Vector3(xDeform, yDeform, zDeform);
-                        meshVerticies[i] -= deform * damageMultiplier;
+                        meshVertices[i] -= deform * damageMultiplier;
                     }
                 }
             }
  
-            UpdateMeshVerticies();
+            UpdateMeshVertices();
         }
     }
  
-    void UpdateMeshVerticies()
+    void UpdateMeshVertices()
     {
-        filter.mesh.vertices = meshVerticies;
+        filter.mesh.vertices = meshVertices;
         coll.sharedMesh = filter.mesh;
+        
+        uvs = new Vector2[meshVertices.Length];
+
+        for (int i = 0; i < uvs.Length; i++)
+        {
+            uvs[i] = new Vector2(meshVertices[i].x, meshVertices[i].z);
+        }
+        filter.mesh.uv = uvs;
     }
 }
