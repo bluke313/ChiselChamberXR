@@ -85,7 +85,7 @@ public class Deform : MonoBehaviour
 
         for (int i = 0; i < uvs.Length; i++)
         {
-            uvs[i] = new Vector2(meshVertices[i].x, meshVertices[i].z);
+            uvs[i] = new Vector2(meshVertices[i].y / 20, meshVertices[i].z / 20);
         }
         filter.mesh.uv = uvs;
     }

@@ -4,9 +4,9 @@ using System.Collections;
 [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
 public class Cube : MonoBehaviour {
 
-	private int xSize = 10;
-    private int ySize = 10;
-    private int zSize = 10;
+	private int xSize = 20;
+    private int ySize = 20;
+    private int zSize = 20;
     private Vector3[] vertices;
 	private Vector2[] uvs;
     private Mesh mesh;
@@ -35,8 +35,35 @@ public class Cube : MonoBehaviour {
 
         for (int i = 0; i < uvs.Length; i++)
         {
-            uvs[i] = new Vector2(vertices[i].x, vertices[i].z);
+            uvs[i] = new Vector2(vertices[i].y / 20, vertices[i].z / 20);
+
+			// Potential code to materialize each side independently
+            /*if (i < uvs.Length / 6)
+			{
+                uvs[i] = new Vector2(vertices[i].x / 20, vertices[i].y / 20);
+            }
+			else if (i < 2 * uvs.Length / 6)
+			{
+                uvs[i] = new Vector2(vertices[i].x / 20, vertices[i].y / 20);
+            }
+            else if (i < 3 * uvs.Length / 6)
+            {
+                uvs[i] = new Vector2(vertices[i].x / 20, vertices[i].y / 20);
+            }
+            else if (i < 4 * uvs.Length / 6)
+            {
+                uvs[i] = new Vector2(vertices[i].x / 20, vertices[i].y / 20);
+            }
+            else if (i < 5 * uvs.Length / 6)
+            {
+                uvs[i] = new Vector2(vertices[i].x / 20, vertices[i].y / 20);
+            }
+            else
+            {
+                uvs[i] = new Vector2(vertices[i].x / 20, vertices[i].y / 20);
+            }*/
         }
+
         mesh.uv = uvs;
         // int[] triangles = new int[xSize * ySize * 6];
         // for (int ti = 0, vi = 0, y = 0; y < ySize; y++, vi++) {
@@ -70,7 +97,7 @@ public class Cube : MonoBehaviour {
 
     private int CreateTopFace (int[] triangles, int t, int ring) {
 		int v = ring * ySize;
-        int vMax = v + 2;
+        int vMax = v + 21;
         int vMin = ring * (ySize + 1) - 1;
 		int vMid = vMin + 1;
 
