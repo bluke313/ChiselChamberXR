@@ -23,6 +23,8 @@ public class Return : MonoBehaviour
     public void Interact()
     {
 
+        Debug.Log("Tools returned!");
+
         xrControllerR.SetActive(false);
         xrControllerL.SetActive(false);
 
