@@ -16,38 +16,53 @@ public class Cube : MonoBehaviour {
 		Generate();
 	}
 
-	
 	private void Generate () {
         GetComponent<MeshFilter>().mesh = mesh = new Mesh();
 		
+		// Texture2D myTexture = Resources.Load<Texture2D>("Stone_diff"); // No file extension
+        // if (myTexture != null)
+        // {
+        //     Material material = new Material(Shader.Find("Standard"));
+        //     material.mainTexture = myTexture;
+        //     GetComponent<MeshRenderer>().material = material;
+        // }
 		mesh.name = "Procedural Cube";
 		createVertices();
         createTriangles();
         GetComponent<MeshCollider>().sharedMesh = mesh;
 
-		
 		uvs = new Vector2[vertices.Length];
 
+        for (int i = 0; i < uvs.Length; i++)
+        {
+            uvs[i] = new Vector2(vertices[i].y / 20, vertices[i].z / 20);
 
-    	for (int i = 0; i < vertices.Length; i++)
-    	{
-			if (Mathf.Approximately(0, vertices[i].x)|| Mathf.Approximately(xSize, vertices[i].x)){
-				float u = (vertices[i].y);
-        		float v = (vertices[i].z);
-        		uvs[i] = new Vector2(u/20, v/20);
-			}
-			if (Mathf.Approximately(0, vertices[i].y)|| Mathf.Approximately(ySize, vertices[i].y)){
-				float u = (vertices[i].x);
-        		float v = (vertices[i].z);
-        		uvs[i] = new Vector2(u/20, v/20);
-			}
-			if (Mathf.Approximately(0, vertices[i].z)|| Mathf.Approximately(zSize, vertices[i].z)){
-				float u = (vertices[i].x);
-        		float v = (vertices[i].y);
-        		uvs[i] = new Vector2(u/20, v/20);
-			}
-        	
-    	}
+			// Potential code to materialize each side independently
+            /*if (i < uvs.Length / 6)
+			{
+                uvs[i] = new Vector2(vertices[i].x / 20, vertices[i].y / 20);
+            }
+			else if (i < 2 * uvs.Length / 6)
+			{
+                uvs[i] = new Vector2(vertices[i].x / 20, vertices[i].y / 20);
+            }
+            else if (i < 3 * uvs.Length / 6)
+            {
+                uvs[i] = new Vector2(vertices[i].x / 20, vertices[i].y / 20);
+            }
+            else if (i < 4 * uvs.Length / 6)
+            {
+                uvs[i] = new Vector2(vertices[i].x / 20, vertices[i].y / 20);
+            }
+            else if (i < 5 * uvs.Length / 6)
+            {
+                uvs[i] = new Vector2(vertices[i].x / 20, vertices[i].y / 20);
+            }
+            else
+            {
+                uvs[i] = new Vector2(vertices[i].x / 20, vertices[i].y / 20);
+            }*/
+        }
 
         mesh.uv = uvs;
         // int[] triangles = new int[xSize * ySize * 6];

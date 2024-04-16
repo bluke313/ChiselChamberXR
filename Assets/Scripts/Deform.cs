@@ -89,25 +89,10 @@ public class Deform : MonoBehaviour
         
         uvs = new Vector2[meshVertices.Length];
 
-        for (int i = 0; i < meshVertices.Length; i++)
-    	{
-			if (Mathf.Approximately(0, meshVertices[i].x)|| Mathf.Approximately(20, meshVertices[i].x)){
-				float u = (meshVertices[i].y);
-        		float v = (meshVertices[i].z);
-        		uvs[i] = new Vector2(u/20, v/20);
-			}
-			if (Mathf.Approximately(0, meshVertices[i].y)|| Mathf.Approximately(20, meshVertices[i].y)){
-				float u = (meshVertices[i].x);
-        		float v = (meshVertices[i].z);
-        		uvs[i] = new Vector2(u/20, v/20);
-			}
-			if (Mathf.Approximately(0, meshVertices[i].z)|| Mathf.Approximately(20, meshVertices[i].z)){
-				float u = (meshVertices[i].x);
-        		float v = (meshVertices[i].y);
-        		uvs[i] = new Vector2(u/20, v/20);
-			}
-        	
-    	}
+        for (int i = 0; i < uvs.Length; i++)
+        {
+            uvs[i] = new Vector2(meshVertices[i].y / 20, meshVertices[i].z / 20);
+        }
         filter.mesh.uv = uvs;
     }
 }
