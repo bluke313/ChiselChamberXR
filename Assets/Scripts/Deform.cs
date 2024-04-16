@@ -85,62 +85,101 @@ public class Deform : MonoBehaviour
     
     
 
-    void UpdateMeshVertices()
-    {
-        filter.mesh.vertices = meshVertices;
-        coll.sharedMesh = filter.mesh;
+    // void UpdateMeshVertices()
+    // {
+    //     filter.mesh.vertices = meshVertices;
+    //     coll.sharedMesh = filter.mesh;
         
-        uvs = new Vector2[meshVertices.Length];
+    //     uvs = new Vector2[meshVertices.Length];
 
-        Vector3 minBounds = new Vector3(float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity);
-        Vector3 maxBounds = new Vector3(float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity);
+    //     Vector3 minBounds = new Vector3(float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity);
+    //     Vector3 maxBounds = new Vector3(float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity);
 
-        foreach (Vector3 vertex in meshVertices) {
-            minBounds = Vector3.Min(minBounds, vertex);
-            maxBounds = Vector3.Max(maxBounds, vertex);
-        }
+    //     foreach (Vector3 vertex in meshVertices) {
+    //         minBounds = Vector3.Min(minBounds, vertex);
+    //         maxBounds = Vector3.Max(maxBounds, vertex);
+    //     }
 
-        Vector3 size = maxBounds - minBounds; // Compute size of the bounding box
+    //     Vector3 size = maxBounds - minBounds; // Compute size of the bounding box
 
-        for (int i = 0; i < meshVertices.Length; i++) {
-            Vector3 normalizedPosition = new Vector3(
-                (meshVertices[i].x - minBounds.x) / size.x,
-                (meshVertices[i].y - minBounds.y) / size.y,
-                (meshVertices[i].z - minBounds.z) / size.z
-            );
+    //     for (int i = 0; i < meshVertices.Length; i++) {
+    //         Vector3 normalizedPosition = new Vector3(
+    //             (meshVertices[i].x) / size.x,
+    //             (meshVertices[i].y) / size.y,
+    //             (meshVertices[i].z) / size.z
+    //         );
 
-            if (Mathf.Approximately(meshVertices[i].x, minBounds.x) || Mathf.Approximately(meshVertices[i].x, maxBounds.x)){
-        // Mapping for faces perpendicular to the X-axis
-                uvs[i] = new Vector2(normalizedPosition.y, normalizedPosition.z);
-            } else if (Mathf.Approximately(meshVertices[i].y, minBounds.y) || Mathf.Approximately(meshVertices[i].y, maxBounds.y)){
-                // Mapping for faces perpendicular to the Y-axis
-                uvs[i] = new Vector2(normalizedPosition.x, normalizedPosition.z);
-            } else if (Mathf.Approximately(meshVertices[i].z, minBounds.z) || Mathf.Approximately(meshVertices[i].z, maxBounds.z)){
-        // Mapping for faces perpendicular to the Z-axis
-                uvs[i] = new Vector2(normalizedPosition.x, normalizedPosition.y);
-            }
-        }
+    //         if (Mathf.Approximately(meshVertices[i].x, minBounds.x) || Mathf.Approximately(meshVertices[i].x, maxBounds.x)){
+    //             uvs[i] = new Vector2(normalizedPosition.y, normalizedPosition.z);
+    //         } else if (Mathf.Approximately(meshVertices[i].y, minBounds.y) || Mathf.Approximately(meshVertices[i].y, maxBounds.y)){
+    //             uvs[i] = new Vector2(normalizedPosition.x, normalizedPosition.z);
+    //         } else if (Mathf.Approximately(meshVertices[i].z, minBounds.z) || Mathf.Approximately(meshVertices[i].z, maxBounds.z)){
+    //             uvs[i] = new Vector2(normalizedPosition.x, normalizedPosition.y);
+    //         }
+    //     }
 
-        for (int i = 0; i < meshVertices.Length; i++)
-        {
+    //     for (int i = 0; i < meshVertices.Length; i++)
+    //     {
             
-            // if (Mathf.Approximately(0, meshVertices[i].x)|| Mathf.Approximately(xSize, meshVertices[i].x)){
-            //     float u = (meshVertices[i].y);
-            //     float v = (meshVertices[i].z);
-            //     uvs[i] = new Vector2(u/20, v/20);
-            // }
-            // if (Mathf.Approximately(0, meshVertices[i].y)|| Mathf.Approximately(ySize, meshVertices[i].y)){
-            //     float u = (meshVertices[i].x);
-            //     float v = (meshVertices[i].z);
-            //     uvs[i] = new Vector2(u/20, v/20);
-            // }
-            // if (Mathf.Approximately(0, meshVertices[i].z)|| Mathf.Approximately(zSize, meshVertices[i].z)){
-            //     float u = (meshVertices[i].x);
-            //     float v = (meshVertices[i].y);
-            //     uvs[i] = new Vector2(u/20, v/20);
-            // }
+    //         // if (Mathf.Approximately(0, meshVertices[i].x)|| Mathf.Approximately(xSize, meshVertices[i].x)){
+    //         //     float u = (meshVertices[i].y);
+    //         //     float v = (meshVertices[i].z);
+    //         //     uvs[i] = new Vector2(u/20, v/20);
+    //         // }
+    //         // if (Mathf.Approximately(0, meshVertices[i].y)|| Mathf.Approximately(ySize, meshVertices[i].y)){
+    //         //     float u = (meshVertices[i].x);
+    //         //     float v = (meshVertices[i].z);
+    //         //     uvs[i] = new Vector2(u/20, v/20);
+    //         // }
+    //         // if (Mathf.Approximately(0, meshVertices[i].z)|| Mathf.Approximately(zSize, meshVertices[i].z)){
+    //         //     float u = (meshVertices[i].x);
+    //         //     float v = (meshVertices[i].y);
+    //         //     uvs[i] = new Vector2(u/20, v/20);
+    //         // }
            
-        }
-        filter.mesh.uv = uvs;
+    //     }
+    //     filter.mesh.uv = uvs;
+    // }
+
+    void UpdateMeshVertices()
+{
+    filter.mesh.vertices = meshVertices;
+    coll.sharedMesh = filter.mesh;
+    
+    uvs = new Vector2[meshVertices.Length];
+
+    Vector3 minBounds = new Vector3(float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity);
+    Vector3 maxBounds = new Vector3(float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity);
+
+    foreach (Vector3 vertex in meshVertices) {
+        minBounds = Vector3.Min(minBounds, vertex);
+        maxBounds = Vector3.Max(maxBounds, vertex);
     }
+
+    Vector3 size = maxBounds - minBounds; // Compute size of the bounding box
+
+    // Initialize variables to track the segment lengths (assuming segmentation along y-axis)
+    float lastY = minBounds.y; // Start at the bottom of the bounding box
+    float cumulativeLengthY = 0; // This will track the cumulative 'segment length' along y
+
+    for (int i = 0; i < meshVertices.Length; i++) {
+        float segmentLength = meshVertices[i].y - lastY; // Calculate the segment length since the last vertex
+        cumulativeLengthY += segmentLength; // Add to cumulative length
+        lastY = meshVertices[i].y; // Update lastY to current vertex y for the next iteration
+
+        float normalizedLengthY = cumulativeLengthY / size.y; // Normalize cumulative length relative to total size along y
+
+        // Apply UV mapping based on normalized segment position
+        if (Mathf.Approximately(meshVertices[i].x, minBounds.x) || Mathf.Approximately(meshVertices[i].x, maxBounds.x)){
+            uvs[i] = new Vector2(normalizedLengthY, meshVertices[i].z / size.z);
+        } else if (Mathf.Approximately(meshVertices[i].y, minBounds.y) || Mathf.Approximately(meshVertices[i].y, maxBounds.y)){
+            uvs[i] = new Vector2(meshVertices[i].x / size.x, meshVertices[i].z / size.z);
+        } else if (Mathf.Approximately(meshVertices[i].z, minBounds.z) || Mathf.Approximately(meshVertices[i].z, maxBounds.z)){
+            uvs[i] = new Vector2(meshVertices[i].x / size.x, normalizedLengthY);
+        }
+    }
+
+    filter.mesh.uv = uvs; // Assign updated UVs to the mesh
+    filter.mesh.RecalculateNormals(); // Optionally recalculate normals to adjust lighting
+}
 }
