@@ -18,14 +18,6 @@ public class Cube : MonoBehaviour {
 
 	private void Generate () {
         GetComponent<MeshFilter>().mesh = mesh = new Mesh();
-		
-		// Texture2D myTexture = Resources.Load<Texture2D>("Stone_diff"); // No file extension
-        // if (myTexture != null)
-        // {
-        //     Material material = new Material(Shader.Find("Standard"));
-        //     material.mainTexture = myTexture;
-        //     GetComponent<MeshRenderer>().material = material;
-        // }
 		mesh.name = "Procedural Cube";
 		createVertices();
         createTriangles();
@@ -33,49 +25,28 @@ public class Cube : MonoBehaviour {
 
 		uvs = new Vector2[vertices.Length];
 
-        for (int i = 0; i < uvs.Length; i++)
+        for (int i = 0; i < vertices.Length; i++)
         {
-            uvs[i] = new Vector2(vertices[i].y / 20, vertices[i].z / 20);
-
-			// Potential code to materialize each side independently
-            /*if (i < uvs.Length / 6)
-			{
-                uvs[i] = new Vector2(vertices[i].x / 20, vertices[i].y / 20);
+            if (Mathf.Approximately(0, vertices[i].x)|| Mathf.Approximately(xSize, vertices[i].x)){
+                float u = (vertices[i].y);
+                float v = (vertices[i].z);
+                uvs[i] = new Vector2(u/20, v/20);
             }
-			else if (i < 2 * uvs.Length / 6)
-			{
-                uvs[i] = new Vector2(vertices[i].x / 20, vertices[i].y / 20);
+            if (Mathf.Approximately(0, vertices[i].y)|| Mathf.Approximately(ySize, vertices[i].y)){
+                float u = (vertices[i].x);
+                float v = (vertices[i].z);
+                uvs[i] = new Vector2(u/20, v/20);
             }
-            else if (i < 3 * uvs.Length / 6)
-            {
-                uvs[i] = new Vector2(vertices[i].x / 20, vertices[i].y / 20);
+            if (Mathf.Approximately(0, vertices[i].z)|| Mathf.Approximately(zSize, vertices[i].z)){
+                float u = (vertices[i].x);
+                float v = (vertices[i].y);
+                uvs[i] = new Vector2(u/20, v/20);
             }
-            else if (i < 4 * uvs.Length / 6)
-            {
-                uvs[i] = new Vector2(vertices[i].x / 20, vertices[i].y / 20);
-            }
-            else if (i < 5 * uvs.Length / 6)
-            {
-                uvs[i] = new Vector2(vertices[i].x / 20, vertices[i].y / 20);
-            }
-            else
-            {
-                uvs[i] = new Vector2(vertices[i].x / 20, vertices[i].y / 20);
-            }*/
+           
         }
 
+
         mesh.uv = uvs;
-        // int[] triangles = new int[xSize * ySize * 6];
-        // for (int ti = 0, vi = 0, y = 0; y < ySize; y++, vi++) {
-		// 	for (int x = 0; x < xSize; x++, ti += 6, vi++) {
-		// 	    triangles[ti] = vi;
-		// 	    triangles[ti + 3] = triangles[ti + 2] = vi + 1;
-		// 	    triangles[ti + 4] = triangles[ti + 1] = vi + xSize + 1;
-		// 	    triangles[ti + 5] = vi + xSize + 2;
-		//     }
-        // }
-        // mesh.triangles = triangles;
-        // mesh.RecalculateNormals();
 	}
 
     private void createTriangles(){

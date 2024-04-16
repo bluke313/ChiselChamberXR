@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.26609626, g: 0.23151985, b: 0.2494643, a: 1}
+  m_IndirectSpecularColor: {r: 0.25330132, g: 0.21698837, b: 0.23319197, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2619,7 +2619,7 @@ GameObject:
   - component: {fileID: 759537749}
   - component: {fileID: 759537750}
   - component: {fileID: 759537751}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Hammer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
