@@ -6626,7 +6626,15 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24649b3c37e4a491abf8ef731ffbd5df, type: 3}
+<<<<<<< Updated upstream
 --- !u!1 &2079948598
+=======
+<<<<<<< HEAD
+--- !u!1 &2065826375
+=======
+--- !u!1 &2079948598
+>>>>>>> 96ac95211c0ccbac5cc68623d129e6479d37e7d6
+>>>>>>> Stashed changes
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6634,6 +6642,16 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+  - component: {fileID: 2065826378}
+  - component: {fileID: 2065826377}
+  - component: {fileID: 2065826376}
+  m_Layer: 0
+  m_Name: Network Manager
+=======
+>>>>>>> Stashed changes
   - component: {fileID: 2079948599}
   - component: {fileID: 2079948602}
   - component: {fileID: 2079948601}
@@ -6641,17 +6659,107 @@ GameObject:
   - component: {fileID: 2079948603}
   m_Layer: 8
   m_Name: SmallHit
+<<<<<<< Updated upstream
+=======
+>>>>>>> 96ac95211c0ccbac5cc68623d129e6479d37e7d6
+>>>>>>> Stashed changes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< Updated upstream
 --- !u!4 &2079948599
+=======
+<<<<<<< HEAD
+--- !u!114 &2065826376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065826375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6960e84d07fb87f47956e7a81d71c4e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ProtocolType: 0
+  m_MaxPacketQueueSize: 128
+  m_MaxPayloadSize: 6144
+  m_HeartbeatTimeoutMS: 500
+  m_ConnectTimeoutMS: 1000
+  m_MaxConnectAttempts: 60
+  m_DisconnectTimeoutMS: 30000
+  ConnectionData:
+    Address: 127.0.0.1
+    Port: 7777
+    ServerListenAddress: 127.0.0.1
+  DebugSimulator:
+    PacketDelayMS: 0
+    PacketJitterMS: 0
+    PacketDropRate: 0
+--- !u!114 &2065826377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065826375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 593a2fe42fa9d37498c96f9a383b6521, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkConfig:
+    ProtocolVersion: 0
+    NetworkTransport: {fileID: 2065826376}
+    PlayerPrefab: {fileID: 8255407410987444444, guid: efe946f944c0a354695fb3ca04b6c9c2, type: 3}
+    Prefabs:
+      NetworkPrefabsLists:
+      - {fileID: 11400000, guid: d0f798d54513be84380574901cf574d5, type: 2}
+    TickRate: 30
+    ClientConnectionBufferTimeout: 10
+    ConnectionApproval: 0
+    ConnectionData: 
+    EnableTimeResync: 0
+    TimeResyncInterval: 30
+    EnsureNetworkVariableLengthSafety: 0
+    EnableSceneManagement: 1
+    ForceSamePrefabs: 1
+    RecycleNetworkIds: 1
+    NetworkIdRecycleDelay: 120
+    RpcHashSize: 0
+    LoadSceneTimeOut: 120
+    SpawnTimeout: 10
+    EnableNetworkLogs: 1
+    OldPrefabList: []
+  RunInBackground: 1
+  LogLevel: 1
+--- !u!4 &2065826378
+=======
+--- !u!4 &2079948599
+>>>>>>> 96ac95211c0ccbac5cc68623d129e6479d37e7d6
+>>>>>>> Stashed changes
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+  m_GameObject: {fileID: 2065826375}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.1040998, y: 3.8993316, z: 8.482183}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> Stashed changes
   m_GameObject: {fileID: 2079948598}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.13493733, z: -0, w: 0.99085414}
@@ -6759,6 +6867,10 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+<<<<<<< Updated upstream
+=======
+>>>>>>> 96ac95211c0ccbac5cc68623d129e6479d37e7d6
+>>>>>>> Stashed changes
 --- !u!1001 &2106424755
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7705,3 +7817,4 @@ SceneRoots:
   - {fileID: 1701939719}
   - {fileID: 7533352}
   - {fileID: 266305704}
+  - {fileID: 2065826378}
