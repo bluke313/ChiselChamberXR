@@ -24,23 +24,25 @@ public class Cube : MonoBehaviour {
         GetComponent<MeshCollider>().sharedMesh = mesh;
 
 		uvs = new Vector2[vertices.Length];
-
+		//if a vertex coordinate is on a face of the cube
+		//uv map it with respect to the other 2 directions
+		//scale texture by xSize,ySize,zSize
         for (int i = 0; i < vertices.Length; i++)
         {
             if (Mathf.Approximately(0, vertices[i].x)|| Mathf.Approximately(xSize, vertices[i].x)){
                 float u = (vertices[i].y);
                 float v = (vertices[i].z);
-                uvs[i] = new Vector2(u/20, v/20);
+                uvs[i] = new Vector2(u/xSize, v/xSize);
             }
             if (Mathf.Approximately(0, vertices[i].y)|| Mathf.Approximately(ySize, vertices[i].y)){
                 float u = (vertices[i].x);
                 float v = (vertices[i].z);
-                uvs[i] = new Vector2(u/20, v/20);
+                uvs[i] = new Vector2(u/ySize, v/ySize);
             }
             if (Mathf.Approximately(0, vertices[i].z)|| Mathf.Approximately(zSize, vertices[i].z)){
                 float u = (vertices[i].x);
                 float v = (vertices[i].y);
-                uvs[i] = new Vector2(u/20, v/20);
+                uvs[i] = new Vector2(u/zSize, v/zSize);
             }
            
         }

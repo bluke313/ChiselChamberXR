@@ -151,25 +151,27 @@ public class Deform : MonoBehaviour
     Vector3 minBounds = new Vector3(float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity);
     Vector3 maxBounds = new Vector3(float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity);
 
+    //find bounds of cube
     foreach (Vector3 vertex in meshVertices) {
         minBounds = Vector3.Min(minBounds, vertex);
         maxBounds = Vector3.Max(maxBounds, vertex);
     }
 
-    Vector3 size = maxBounds - minBounds; // Compute size of the bounding box
+    Vector3 size = maxBounds - minBounds;
 
-    // Initialize variables to track the segment lengths (assuming segmentation along y-axis)
-    float lastY = minBounds.y; // Start at the bottom of the bounding box
-    float cumulativeLengthY = 0; // This will track the cumulative 'segment length' along y
+    float lastY = minBounds.y;
+    float lengthY = 0;
+
 
     for (int i = 0; i < meshVertices.Length; i++) {
-        float segmentLength = meshVertices[i].y - lastY; // Calculate the segment length since the last vertex
-        cumulativeLengthY += segmentLength; // Add to cumulative length
-        lastY = meshVertices[i].y; // Update lastY to current vertex y for the next iteration
+        //move along segments of the cube to apply uvs
+        float segmentLength = meshVertices[i].y - lastY;
+        lengthY += segmentLength;
+        lastY = meshVertices[i].y;
 
-        float normalizedLengthY = cumulativeLengthY / size.y; // Normalize cumulative length relative to total size along y
+        float normalizedLengthY = lengthY / size.y;
 
-        // Apply UV mapping based on normalized segment position
+        //set UVs based on normalized segment position
         if (Mathf.Approximately(meshVertices[i].x, minBounds.x) || Mathf.Approximately(meshVertices[i].x, maxBounds.x)){
             uvs[i] = new Vector2(normalizedLengthY, meshVertices[i].z / size.z);
         } else if (Mathf.Approximately(meshVertices[i].y, minBounds.y) || Mathf.Approximately(meshVertices[i].y, maxBounds.y)){
@@ -179,7 +181,7 @@ public class Deform : MonoBehaviour
         }
     }
 
-    filter.mesh.uv = uvs; // Assign updated UVs to the mesh
-    filter.mesh.RecalculateNormals(); // Optionally recalculate normals to adjust lighting
+    filter.mesh.uv = uvs; 
+    filter.mesh.RecalculateNormals();
 }
 }
