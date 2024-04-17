@@ -20,6 +20,12 @@ public class Return : MonoBehaviour
     public Transform objectToReturn4;
     public Transform returnLocation4;
 
+    public Transform objectToReturn5;
+    public Transform returnLocation5;
+
+    public Transform objectToReturn6;
+    public Transform returnLocation6;
+
     public void Interact()
     {
 
@@ -40,6 +46,12 @@ public class Return : MonoBehaviour
 
         objectToReturn4.position = returnLocation4.position;
         objectToReturn4.rotation = returnLocation4.rotation;
+
+        objectToReturn5.position = returnLocation5.position;
+        objectToReturn5.rotation = returnLocation5.rotation;
+
+        objectToReturn6.position = returnLocation6.position;
+        objectToReturn6.rotation = returnLocation6.rotation;
 
 
         xrControllerR.SetActive(true);
