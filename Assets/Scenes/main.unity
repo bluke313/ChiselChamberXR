@@ -1264,7 +1264,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.54, y: -1.82}
+  m_AnchoredPosition: {x: -3.74, y: -4}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &240413756
@@ -2547,7 +2547,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2a454462cc1bc47eab5642f1bcf4ba54, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.3184832
+      value: 0.20329738
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2a454462cc1bc47eab5642f1bcf4ba54, type: 3}
       propertyPath: m_LocalScale.z
@@ -2559,7 +2559,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2a454462cc1bc47eab5642f1bcf4ba54, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.37
+      value: 0.23
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2a454462cc1bc47eab5642f1bcf4ba54, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5907,7 +5907,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
-    m_FontSize: 15
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -5935,7 +5935,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1383782021}
   m_LocalRotation: {x: 0.000000037467046, y: 0.0014959103, z: -0.0000002920617, w: 0.9999989}
-  m_LocalPosition: {x: 0, y: 0, z: -5.77}
+  m_LocalPosition: {x: 0, y: 0, z: -5.74}
   m_LocalScale: {x: 0.0071800547, y: 0.0071800547, z: 0.0071800547}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5943,7 +5943,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.01, y: -3.25}
+  m_AnchoredPosition: {x: -2.52, y: -4.02}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1385037005
