@@ -3,6 +3,7 @@
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
 /[Ll]ibrary/
+!/Library/PackageCache/com.srcnalt.openai-unity@f7f501c076/
 /[Tt]emp/
 /[Oo]bj/
 /[Bb]uild/
