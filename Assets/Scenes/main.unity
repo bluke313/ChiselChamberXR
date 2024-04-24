@@ -1479,7 +1479,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 256781442}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!20 &256781445
 Camera:
   m_ObjectHideFlags: 0
@@ -8191,6 +8191,10 @@ PrefabInstance:
     - target: {fileID: 1301874298510307168, guid: cf267d0d9a726d847b335291dc4f723f, type: 3}
       propertyPath: m_Name
       value: TestRig
+      objectReference: {fileID: 0}
+    - target: {fileID: 1301874298510307168, guid: cf267d0d9a726d847b335291dc4f723f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3066834953123266042, guid: cf267d0d9a726d847b335291dc4f723f, type: 3}
       propertyPath: m_RequestedTrackingOriginMode
