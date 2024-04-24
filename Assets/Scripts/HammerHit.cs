@@ -13,6 +13,10 @@ public class HammerHit : MonoBehaviour
     public GameObject mediumChisel;
     public GameObject smallChisel;
 
+    public GameObject largeSpawn;
+    public GameObject mediumSpawn;
+    public GameObject smallSpawn;
+
     public float sphereSpeed;
     public float sphereLifespan;
 
@@ -26,16 +30,16 @@ public class HammerHit : MonoBehaviour
             // make sure the collision was with a chisel
             if (collision.gameObject == largeChisel)
             {
-                InstantiateSphere(largeChisel, largeHit);
+                InstantiateSphere(largeSpawn, largeHit);
             }
             else if(collision.gameObject == mediumChisel)
             {
                 // Debug.Log("Medium Hit");
-                InstantiateSphere(mediumChisel, mediumHit);
+                InstantiateSphere(mediumSpawn, mediumHit);
             }
             else if (collision.gameObject == smallChisel)
             {
-                InstantiateSphere(smallChisel, smallHit);
+                InstantiateSphere(smallSpawn, smallHit);
             }
         }
 
@@ -48,20 +52,14 @@ public class HammerHit : MonoBehaviour
     }
 
     // create temp shpere to represent hit velocity
-    void InstantiateSphere(GameObject chisel, GameObject spherePrefab)
+    void InstantiateSphere(GameObject spawn, GameObject spherePrefab)
     {
-        Vector3 spherePos = chisel.transform.position;
-        if (spherePrefab == largeHit)
-        {
-            spherePos = new Vector3(chisel.transform.position.x, chisel.transform.position.y, chisel.transform.position.z + 0.01f);
-        }
-
-        GameObject sphere = Instantiate(spherePrefab, chisel.transform.position, Quaternion.identity); // generate sphere
+        GameObject sphere = Instantiate(spherePrefab, spawn.transform.position, Quaternion.identity); // generate sphere
         Rigidbody sphereRigidbody = sphere.GetComponent<Rigidbody>(); // get rigidbody component
 
         if (sphereRigidbody != null)
         {
-            sphereRigidbody.velocity = chisel.transform.forward * sphereSpeed; // set velocity of sphere
+            sphereRigidbody.velocity = spawn.transform.forward * sphereSpeed; // set velocity of sphere
         }
 
         Destroy(sphere, sphereLifespan); // destroy sphere soon after creation
