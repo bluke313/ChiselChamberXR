@@ -2,6 +2,9 @@ using UnityEngine;
 using System.Collections;
 
 [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
+/**
+Generate the Cube and texture
+*/
 public class Cube : MonoBehaviour {
 
 	private int xSize = 20;
@@ -24,6 +27,7 @@ public class Cube : MonoBehaviour {
         GetComponent<MeshCollider>().sharedMesh = mesh;
 
 		uvs = new Vector2[vertices.Length];
+		//Create UVs so texture is applied
 		//if a vertex coordinate is on a face of the cube
 		//uv map it with respect to the other 2 directions
 		//scale texture by xSize,ySize,zSize
