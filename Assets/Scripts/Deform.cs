@@ -8,6 +8,12 @@ public class Deform : NetworkBehaviour
     [Range(0, 10)]
     public float deformRadius = 0.2f;
     [Range(0, 10)]
+    public float largeDeformRadius = 0.2f;
+    [Range(0, 10)]
+    public float mediumDeformRadius = 0.2f;
+    [Range(0, 10)]
+    public float smallDeformRadius = 0.2f;
+    [Range(0, 10)]
     public float maxDeform = 0.001f;
     [Range(0, 1)]
     public float damageFalloff = 1;
@@ -24,6 +30,11 @@ public class Deform : NetworkBehaviour
     private Vector3[] startingVertices;
     private Vector3[] meshVertices;
     private Vector2[] uvs;
+
+    //for deformRadius adjustments
+    public GameObject largeHit;
+    public GameObject mediumHit;
+    public GameObject smallHit;
 
     void Start()
     {
@@ -49,7 +60,20 @@ public class Deform : NetworkBehaviour
         //     deformRadius = collision.gameObject.GetComponent<Variables>().deformRadius;
         // }
         
-        Debug.Log("Hit with " + collision.gameObject.layer);
+        //Debug.Log("Hit with " + collision.gameObject.layer);
+
+        if (collision.gameObject == largeHit)
+        {
+            deformRadius = largeDeformRadius;
+        }
+        else if (collision.gameObject == mediumHit)
+        {
+            deformRadius = mediumDeformRadius;
+        }
+        else if (collision.gameObject == smallHit)
+        {
+            deformRadius = smallDeformRadius;
+        }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Hits"))
         {

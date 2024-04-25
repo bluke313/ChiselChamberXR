@@ -20,26 +20,29 @@ public class HammerHit : MonoBehaviour
     public float sphereSpeed;
     public float sphereLifespan;
 
+    public float largeScalar;
+    public float mediumScalar;
+    public float smallScalar;
+
     // detect any collision with hammer
     void OnCollisionEnter(Collision collision)
     {
 
         // if necessary velocity is reached
-        if (collision.relativeVelocity.magnitude >= 0.1f)
+        if (collision.relativeVelocity.magnitude >= 0.2f)
         {
             // make sure the collision was with a chisel
             if (collision.gameObject == largeChisel)
             {
-                InstantiateSphere(largeSpawn, largeHit);
+                InstantiateSphere(largeSpawn, largeHit, largeScalar);
             }
             else if(collision.gameObject == mediumChisel)
             {
-                // Debug.Log("Medium Hit");
-                InstantiateSphere(mediumSpawn, mediumHit);
+                InstantiateSphere(mediumSpawn, mediumHit, mediumScalar);
             }
             else if (collision.gameObject == smallChisel)
             {
-                InstantiateSphere(smallSpawn, smallHit);
+                InstantiateSphere(smallSpawn, smallHit, smallScalar);
             }
         }
 
@@ -52,9 +55,12 @@ public class HammerHit : MonoBehaviour
     }
 
     // create temp shpere to represent hit velocity
-    void InstantiateSphere(GameObject spawn, GameObject spherePrefab)
+    void InstantiateSphere(GameObject spawn, GameObject spherePrefab, float scalar)
     {
         GameObject sphere = Instantiate(spherePrefab, spawn.transform.position, Quaternion.identity); // generate sphere
+        //sphere.transform.localScale = new Vector3(scalar, scalar, scalar);
+        sphere.transform.localScale = new Vector3(scalar, scalar, scalar);
+        //Debug.Log(spherePrefab + " scale: " + sphere.transform.localScale);
         Rigidbody sphereRigidbody = sphere.GetComponent<Rigidbody>(); // get rigidbody component
 
         if (sphereRigidbody != null)
