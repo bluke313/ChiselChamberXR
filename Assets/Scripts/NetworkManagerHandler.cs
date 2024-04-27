@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 using TMPro;
+//using Unity.Networking.Transport;
+using Unity.Netcode.Transports.UTP;
 
 public class NetworkManagerHandler : NetworkBehaviour
 {
+    private UnityTransport transport;
     public TMP_Dropdown modeDropdown;
     public GameObject cubePrefab;
 
@@ -19,6 +22,11 @@ public class NetworkManagerHandler : NetworkBehaviour
     };
 
     void Start() {
+        NetworkManager.Singleton.GetComponent<UnityTransport>().SetConnectionData(
+        "192.168.1.20",  //host address
+        (ushort)7777, //port number
+        "0.0.0.0" //server listen address, 0.0.0.0 is listen to all
+        );//`127.0.0.1` is localhost
         modeDropdown.onValueChanged.AddListener(HandleDropdownChange);
         NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
         NetworkManager.Singleton.OnServerStarted += OnServerStarted;

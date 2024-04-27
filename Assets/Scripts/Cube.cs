@@ -13,7 +13,7 @@ public class Cube : MonoBehaviour {
     private Vector3[] vertices;
 	private Vector2[] uvs;
     private Mesh mesh;
-	public Material materialWithTexture;
+	// public Material materialWithTexture;
 
     private void Awake () {
 		Generate();
