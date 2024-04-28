@@ -22,11 +22,17 @@ public class NetworkManagerHandler : NetworkBehaviour
     };
 
     void Start() {
+        // NetworkManager.Singleton.GetComponent<UnityTransport>().SetConnectionData(
+        // "192.168.1.100",  //host address
+        // (ushort)7777, //port number
+        // "0.0.0.0" //server listen address, 0.0.0.0 is listen to all
+        // );//`127.0.0.1` is localhost
+
         NetworkManager.Singleton.GetComponent<UnityTransport>().SetConnectionData(
-        "192.168.1.20",  //host address
+        "127.0.0.1",  //host address
         (ushort)7777, //port number
         "0.0.0.0" //server listen address, 0.0.0.0 is listen to all
-        );//`127.0.0.1` is localhost
+        );
         modeDropdown.onValueChanged.AddListener(HandleDropdownChange);
         NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
         NetworkManager.Singleton.OnServerStarted += OnServerStarted;

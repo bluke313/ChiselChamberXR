@@ -50,15 +50,9 @@ public class Deform : NetworkBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        //if (!IsOwner) //should keep players from editing each other's cubes
-         //   return;
-        //deformRadius = 
+        // if (!IsOwner) //should keep players from editing each other's cubes
+        //     return;
         Debug.Log($"Hit with {collision.gameObject.name} tool");
-        // trying to make deform radius adjustable by tool.
-        // if(collision.gameObject.GetComponent<Variables>().deformRadius != null)
-        // {
-        //     deformRadius = collision.gameObject.GetComponent<Variables>().deformRadius;
-        // }
         
         //Debug.Log("Hit with " + collision.gameObject.layer);
 
