@@ -53,7 +53,7 @@ public class Deform : NetworkBehaviour
         //if (!IsOwner) //should keep players from editing each other's cubes
          //   return;
         //deformRadius = 
-        Debug.Log($"Hit with {collision.gameObject.name} tool");
+        // Debug.Log($"Hit with {collision.gameObject.name} tool");
         // trying to make deform radius adjustable by tool.
         // if(collision.gameObject.GetComponent<Variables>().deformRadius != null)
         // {
@@ -62,8 +62,11 @@ public class Deform : NetworkBehaviour
         
         //Debug.Log("Hit with " + collision.gameObject.layer);
 
+        Debug.Log(collision.gameObject.name);
+
         if (collision.gameObject == largeHit)
         {
+            Debug.Log("large")
             deformRadius = largeDeformRadius;
         }
         else if (collision.gameObject == mediumHit)
@@ -77,18 +80,20 @@ public class Deform : NetworkBehaviour
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Hits"))
         {
-            Debug.Log("We made it");
+            
+            
             float collisionPower = collision.impulse.magnitude;
 
-            if (collisionPower > minDamage)
-            {
+            // if (collisionPower > minDamage)
+            // {
+                // Debug.Log("We made it");
                 if (collisionSounds.Length > 0)
                     AudioSource.PlayClipAtPoint(collisionSounds[Random.Range(0, collisionSounds.Length)], transform.position, 0.5f);
 
                 ProcessCollision(collision);
                 //send local changes to server
                 UpdateMeshVerticesServerRpc(meshVertices, uvs);
-            }
+            // }
         }
     }
 
@@ -96,6 +101,7 @@ public class Deform : NetworkBehaviour
     {
         foreach (ContactPoint point in collision.contacts)
                 {
+                    // Debug.Log("point " + transform.InverseTransformPoint(point.point));
                     for (int i = 0; i < meshVertices.Length; i++)
                     {
                         Vector3 vertexPosition = meshVertices[i];
@@ -103,17 +109,18 @@ public class Deform : NetworkBehaviour
                         float distanceFromCollision = Vector3.Distance(vertexPosition, pointPosition);
                         float distanceFromOriginal = Vector3.Distance(startingVertices[i], vertexPosition);
 
-                        if (distanceFromCollision < deformRadius && distanceFromOriginal < maxDeform)
+                        if (distanceFromCollision < deformRadius )
                         {
                             float falloff = 1 - (distanceFromCollision / deformRadius) * damageFalloff;
+                            // Debug.Log(pointPosition);
+                            float xDeform = (pointPosition.x - 10)* falloff;
+                            float yDeform = (pointPosition.y - 10) * falloff;
+                            float zDeform = (pointPosition.z -10) * falloff;
+                            // Debug.Log("x " + xDeform + " y " + yDeform + " z " + zDeform);
 
-                            float xDeform = pointPosition.x * falloff;
-                            float yDeform = pointPosition.y * falloff;
-                            float zDeform = pointPosition.z * falloff;
-
-                            xDeform = Mathf.Clamp(xDeform, 0, maxDeform);
-                            yDeform = Mathf.Clamp(yDeform, 0, maxDeform);
-                            zDeform = Mathf.Clamp(zDeform, 0, maxDeform);
+                            // xDeform = Mathf.Clamp(xDeform, 0, maxDeform);
+                            // yDeform = Mathf.Clamp(yDeform, 0, maxDeform);
+                            // zDeform = Mathf.Clamp(zDeform, 0, maxDeform);
 
                             Vector3 deform = new Vector3(xDeform, yDeform, zDeform);
                             meshVertices[i] -= deform * damageMultiplier;
