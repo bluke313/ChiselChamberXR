@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2244165166903132524}
   - component: {fileID: 1669993807043295382}
   - component: {fileID: 5004767195832545948}
-  - component: {fileID: -5036521010198467749}
   m_Layer: 0
   m_Name: Training table
   m_TagString: Untagged
@@ -107,23 +106,3 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: c5cd56fa3a1f1bd42a234ca540421881, type: 3}
---- !u!114 &-5036521010198467749
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3380980152881024578}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3640055874
-  AlwaysReplicateAsRoot: 0
-  SynchronizeTransform: 1
-  ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
-  SpawnWithObservers: 1
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
