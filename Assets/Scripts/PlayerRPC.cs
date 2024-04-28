@@ -27,21 +27,21 @@ public class PlayerRPC : NetworkBehaviour
             Quaternion newRotation = cameraTransform.rotation;
 
             MovePlayerServerRpc(newPosition, newRotation);
-            Debug.Log($"Local Position Updated: {newPosition}, rotation: {newRotation}");
+            //Debug.Log($"Local Position Updated: {newPosition}, rotation: {newRotation}");
         }
     }
     //update transform
     [ServerRpc(RequireOwnership = false)]
     void MovePlayerServerRpc(Vector3 newPosition, Quaternion newRotation)
     {
-        Debug.Log($"Server received new position: {newPosition} and rotation: {newRotation}");
+        //Debug.Log($"Server received new position: {newPosition} and rotation: {newRotation}");
         UpdatePositionClientRpc(newPosition, newRotation);
     }
     //update client transform
     [ClientRpc]
     void UpdatePositionClientRpc(Vector3 newPosition, Quaternion newRotation)
     {
-        Debug.Log($"{gameObject.name} received new position: {newPosition} and rotation: {newRotation}");
+        //Debug.Log($"{gameObject.name} received new position: {newPosition} and rotation: {newRotation}");
         transform.position = newPosition;
         transform.rotation = newRotation;
     }

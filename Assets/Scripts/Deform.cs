@@ -128,7 +128,7 @@ public class Deform : NetworkBehaviour
                     }
                 }
 
-        UpdateMeshLocally();
+        //UpdateMeshLocally();
     }
 
     //updates the mesh data locally
