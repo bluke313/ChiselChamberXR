@@ -11,6 +11,7 @@ public class NetworkManagerHandler : NetworkBehaviour
     private UnityTransport transport;
     public TMP_Dropdown modeDropdown;
     public GameObject cubePrefab;
+    private GameObject[] spawnedCubes;
 
     //cube spawn positions
     private Vector3[] spawnPositions = new Vector3[]
@@ -22,6 +23,7 @@ public class NetworkManagerHandler : NetworkBehaviour
     };
 
     void Start() {
+        spawnedCubes = new GameObject[NetworkManager.Singleton.ConnectedClientsList.Count];
         // NetworkManager.Singleton.GetComponent<UnityTransport>().SetConnectionData(
         // "192.168.1.100",  //host address
         // (ushort)7777, //port number
@@ -29,7 +31,7 @@ public class NetworkManagerHandler : NetworkBehaviour
         // );//`127.0.0.1` is localhost
 
         NetworkManager.Singleton.GetComponent<UnityTransport>().SetConnectionData(
-        "127.0.0.1",  //host address
+        "192.168.1.20",  //host address
         (ushort)7777, //port number
         "0.0.0.0" //server listen address, 0.0.0.0 is listen to all
         );
@@ -68,6 +70,20 @@ public class NetworkManagerHandler : NetworkBehaviour
         SpawnCube(clientId);
     }
 
+    private void OnClientDisconnected(ulong clientId) {
+        if (NetworkManager.Singleton.IsServer) {
+            int clientIndex = FindClientIndex(NetworkManager.Singleton.ConnectedClientsList, clientId);
+            if (clientIndex != -1)
+            {
+                if (spawnedCubes[clientIndex] != null)
+                {
+                    Destroy(spawnedCubes[clientIndex]);
+                    spawnedCubes[clientIndex] = null;
+                }
+            }
+        }
+    }
+
     //find the client in the list passed, return index
     //-1 if not found
     private int FindClientIndex(IReadOnlyList<NetworkClient> clients, ulong clientId)
@@ -99,6 +115,9 @@ public class NetworkManagerHandler : NetworkBehaviour
         Vector3 spawnPosition = spawnPositions[clientIndex % spawnPositions.Length];
         GameObject instance = Instantiate(cubePrefab, spawnPosition, Quaternion.identity);
         instance.GetComponent<NetworkObject>().Spawn();
+        spawnedCubes[clientIndex] = instance;
+
+
 }
 
 }

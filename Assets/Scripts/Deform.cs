@@ -66,7 +66,7 @@ public class Deform : NetworkBehaviour
 
         if (collision.gameObject == largeHit)
         {
-            Debug.Log("large")
+            Debug.Log("large");
             deformRadius = largeDeformRadius;
         }
         else if (collision.gameObject == mediumHit)
@@ -128,7 +128,11 @@ public class Deform : NetworkBehaviour
                     }
                 }
 
-        UpdateMeshLocally();
+        if(!NetworkManager.Singleton.IsServer && !NetworkManager.Singleton.IsClient){
+            // Debug.Log("local");
+            UpdateMeshLocally();
+        }
+        
     }
 
     //updates the mesh data locally
