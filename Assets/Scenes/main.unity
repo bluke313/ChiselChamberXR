@@ -1943,7 +1943,7 @@ MonoBehaviour:
   m_MaxConnectAttempts: 60
   m_DisconnectTimeoutMS: 30000
   ConnectionData:
-    Address: 127.0.0.1
+    Address: 192.168.1.20
     Port: 7777
     ServerListenAddress: 0.0.0.0
   DebugSimulator:
@@ -9809,6 +9809,10 @@ PrefabInstance:
       propertyPath: mediumDeformRadius
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5233623771776427763, guid: 8b8628513ed027c4fb01bb5f4735446c, type: 3}
+      propertyPath: materialWithTexture
+      value: 
+      objectReference: {fileID: 2100000, guid: 86ca84dbd0e02e747bd2d2f8ba5b7d1a, type: 2}
     - target: {fileID: 6779263197697772674, guid: 8b8628513ed027c4fb01bb5f4735446c, type: 3}
       propertyPath: m_Enabled
       value: 0

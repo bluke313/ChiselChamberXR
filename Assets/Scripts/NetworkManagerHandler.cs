@@ -28,8 +28,13 @@ public class NetworkManagerHandler : NetworkBehaviour
         // "0.0.0.0" //server listen address, 0.0.0.0 is listen to all
         // );//`127.0.0.1` is localhost
 
+        // NetworkManager.Singleton.GetComponent<UnityTransport>().SetConnectionData(
+        // "127.0.0.1",  //host address
+        // (ushort)7777, //port number
+        // "0.0.0.0" //server listen address, 0.0.0.0 is listen to all
+        // );
         NetworkManager.Singleton.GetComponent<UnityTransport>().SetConnectionData(
-        "127.0.0.1",  //host address
+        "192.168.1.20",  //host address
         (ushort)7777, //port number
         "0.0.0.0" //server listen address, 0.0.0.0 is listen to all
         );

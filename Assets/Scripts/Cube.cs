@@ -13,7 +13,7 @@ public class Cube : MonoBehaviour {
     private Vector3[] vertices;
 	private Vector2[] uvs;
     private Mesh mesh;
-	// public Material materialWithTexture;
+	public Material newMaterial;
 
     private void Awake () {
 		Generate();
@@ -25,6 +25,7 @@ public class Cube : MonoBehaviour {
 		createVertices();
         createTriangles();
         GetComponent<MeshCollider>().sharedMesh = mesh;
+		GetComponent<Renderer>().material = newMaterial;
 
 		uvs = new Vector2[vertices.Length];
 		//Create UVs so texture is applied
