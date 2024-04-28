@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &6855239622639359549
+--- !u!1001 &7811568391092114774
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 22c3f5abddf2dac459a987b2f8f84980, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.372269
+      value: -8.678795
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 22c3f5abddf2dac459a987b2f8f84980, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.92463833
+      value: 0.54215246
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 22c3f5abddf2dac459a987b2f8f84980, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.0847
+      value: -0.30893326
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 22c3f5abddf2dac459a987b2f8f84980, type: 3}
       propertyPath: m_LocalRotation.w
@@ -62,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 22c3f5abddf2dac459a987b2f8f84980, type: 3}
       propertyPath: m_Name
-      value: Chiseler
+      value: Chiseler 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -70,26 +70,26 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 22c3f5abddf2dac459a987b2f8f84980, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -8746164639428458835}
+      addedObject: {fileID: 5977381483198912282}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 22c3f5abddf2dac459a987b2f8f84980, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8480038849499030281}
+      addedObject: {fileID: 150123089738348117}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 22c3f5abddf2dac459a987b2f8f84980, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -1066723254218308322}
+      addedObject: {fileID: 5883966851479042245}
   m_SourcePrefab: {fileID: 100100000, guid: 22c3f5abddf2dac459a987b2f8f84980, type: 3}
---- !u!1 &6044918994607483756 stripped
+--- !u!1 &6965148608169125895 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 22c3f5abddf2dac459a987b2f8f84980, type: 3}
-  m_PrefabInstance: {fileID: 6855239622639359549}
+  m_PrefabInstance: {fileID: 7811568391092114774}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &-8746164639428458835
+--- !u!64 &5977381483198912282
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6044918994607483756}
+  m_GameObject: {fileID: 6965148608169125895}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -105,19 +105,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4711208715938537054, guid: 22c3f5abddf2dac459a987b2f8f84980, type: 3}
---- !u!114 &8480038849499030281
+--- !u!114 &150123089738348117
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6044918994607483756}
+  m_GameObject: {fileID: 6965148608169125895}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2180372111
+  GlobalObjectIdHash: 526140350
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
@@ -125,13 +125,13 @@ MonoBehaviour:
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
---- !u!114 &-1066723254218308322
+--- !u!114 &5883966851479042245
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6044918994607483756}
+  m_GameObject: {fileID: 6965148608169125895}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24c4736ceae9d254584869b25860cd9b, type: 3}
