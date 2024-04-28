@@ -66,7 +66,7 @@ public class Deform : NetworkBehaviour
 
         if (collision.gameObject == largeHit)
         {
-            Debug.Log("large")
+            Debug.Log("large");
             deformRadius = largeDeformRadius;
         }
         else if (collision.gameObject == mediumHit)

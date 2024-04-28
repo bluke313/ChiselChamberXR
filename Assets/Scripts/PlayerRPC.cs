@@ -9,8 +9,8 @@ public class PlayerRPC : NetworkBehaviour
     void Start()
     {
         //MUST CHANGE PATH TO WHATEVER CAMERA OBJECT THE PLAYER OBJECT SHOULD MOVE WITH
-        cameraTransform = GameObject.Find("TestRig/Camera Offset/Main Camera").transform;
-        //cameraTransform = GameObject.Find("XR Origin (XR Rig)/Camera Offset/Main Camera").transform;
+        //cameraTransform = GameObject.Find("TestRig/Camera Offset/Main Camera").transform;
+        cameraTransform = GameObject.Find("XR Origin (XR Rig)/Camera Offset/Main Camera").transform;
 
         if (cameraTransform == null)
         {
