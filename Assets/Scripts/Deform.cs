@@ -127,8 +127,10 @@ public class Deform : NetworkBehaviour
                         }
                     }
                 }
-
-        //UpdateMeshLocally();
+        if (!NetworkManager.Singleton.IsServer && !NetworkManager.Singleton.IsClient)
+        {
+           UpdateMeshLocally();
+        }
     }
 
     //updates the mesh data locally
