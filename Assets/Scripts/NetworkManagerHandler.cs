@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Unity.Netcode;
 using TMPro;
 //using Unity.Networking.Transport;
@@ -10,8 +11,11 @@ public class NetworkManagerHandler : NetworkBehaviour
 {
     private UnityTransport transport;
     public TMP_Dropdown modeDropdown;
+    public Button singleplayer;
     public GameObject cubePrefab;
     private GameObject[] spawnedCubes;
+
+    private GameObject worldCube;
 
     //cube spawn positions
     private Vector3[] spawnPositions = new Vector3[]
@@ -36,11 +40,23 @@ public class NetworkManagerHandler : NetworkBehaviour
         // "0.0.0.0" //server listen address, 0.0.0.0 is listen to all
         // );
         NetworkManager.Singleton.GetComponent<UnityTransport>().SetConnectionData(
-        "192.168.1.20",  //host address
+        "192.168.1.100",  //host address
         (ushort)7777, //port number
         "0.0.0.0" //server listen address, 0.0.0.0 is listen to all
         );
+        Button[] buttons = GameObject.FindObjectsOfType<Button>();
+
+        // Iterate through the found buttons
+        foreach (Button button in buttons)
+        {
+            // Check if the button's GameObject matches the desired name
+            if (button.gameObject.name == "SinglePlayer")
+            {
+                singleplayer =  button;
+            }
+        }
         modeDropdown.onValueChanged.AddListener(HandleDropdownChange);
+        singleplayer.onClick.AddListener(HandleSinglePlayer);
         NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
         NetworkManager.Singleton.OnServerStarted += OnServerStarted;
     }
@@ -48,8 +64,9 @@ public class NetworkManagerHandler : NetworkBehaviour
     //deactivate single player cube
     //start host or start client
     private void HandleDropdownChange(int index) {
-        if (GameObject.Find("World/Cube").activeSelf){
-            GameObject.Find("World/Cube").SetActive(false);
+        worldCube = GameObject.Find("Cube");
+        if (worldCube.activeSelf){
+            worldCube.SetActive(false);
         }
         if (index == 1) {
             NetworkManager.Singleton.StartHost();
@@ -57,6 +74,22 @@ public class NetworkManagerHandler : NetworkBehaviour
             NetworkManager.Singleton.StartClient();
         }
     }
+
+    private void HandleSinglePlayer(){
+        // GameObject cubeObject = GameObject.Find("Cube");
+        // if (cubeObject != null)
+        // {
+            worldCube.SetActive(true);
+        // }
+        foreach(GameObject cube in spawnedCubes){
+            if(cube != null){
+                cube.GetComponent<NetworkObject>().Despawn();
+            }
+            
+        }
+        NetworkManager.Singleton.Shutdown();
+    }
+
 
     private void OnServerStarted()
     {

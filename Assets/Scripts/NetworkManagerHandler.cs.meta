@@ -3,7 +3,10 @@ guid: 080d92db25f8ef9429fe2c7838986521
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - modeDropdown: {instanceID: 0}
+  - singleplayer: {fileID: 4503244866442728140, guid: b5f805857ba762144b04efd92513db78, type: 3}
+  - cubePrefab: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
