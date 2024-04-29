@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using TMPro;
 
 [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
 /**
@@ -13,11 +14,29 @@ public class Cube : MonoBehaviour {
     private Vector3[] vertices;
 	private Vector2[] uvs;
     private Mesh mesh;
-	public Material newMaterial;
+	public TMP_Dropdown matDropdown;
+	public Material myMaterial;
+
 
     private void Awake () {
 		Generate();
+		
 	}
+	void Start(){
+		matDropdown.onValueChanged.AddListener(HandleDropdownChange);
+	}
+
+	private void HandleDropdownChange(int index) {
+		Debug.Log("Lock IN");
+        if (index == 0) {
+			Debug.Log("stone");
+            myMaterial = Resources.Load("Stone_diff") as Material;
+        } else if (index == 1) {
+			Debug.Log("marble");
+            myMaterial = Resources.Load("MarbleMat") as Material;
+        }
+		Generate();
+    }
 
 	private void Generate () {
         GetComponent<MeshFilter>().mesh = mesh = new Mesh();
@@ -25,7 +44,7 @@ public class Cube : MonoBehaviour {
 		createVertices();
         createTriangles();
         GetComponent<MeshCollider>().sharedMesh = mesh;
-		GetComponent<Renderer>().material = newMaterial;
+		GetComponent<Renderer>().material = myMaterial;
 
 		uvs = new Vector2[vertices.Length];
 		//Create UVs so texture is applied
